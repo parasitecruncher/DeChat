@@ -31,6 +31,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextInputDialog;
 import server.RendezvousThread;
 /**
  *
@@ -51,6 +52,8 @@ public class GUIManager extends Application{
         }
         else switch (mode) {
             case CLIENT:
+                
+                initCE();//Dialog to get username from dialog and initiating CE
                 loader = new FXMLLoader();
                 anchorPane = (AnchorPane)loader.load(getClass().getResource("/GUI/Client.fxml").openStream());
                 clientController=(ClientController)loader.getController();
@@ -134,7 +137,6 @@ public class GUIManager extends Application{
         Task task = new Task<Void>() {
                 @Override
                 public Void call() {
-                    //SIMULATE A FILE DOWNLOAD
                     try {
                         chatEngine.requestTIMESTAMPFromAll();
                         Thread.sleep(10000);
@@ -145,7 +147,19 @@ public class GUIManager extends Application{
                     return null;
                 }
             };
+        task.setOnSucceeded(taskFinishEvent -> clientController.updatePeerList(chatEngine.getPeerMap()));
+
         // TODO: Update peerlist when user updates from peer with best timestamp
+    }
+
+    private void initCE() {
+        TextInputDialog dialog =new TextInputDialog("Enter Username");
+        dialog.setTitle("DeChat");
+        dialog.setContentText("Please enter your Username");
+        Optional<String> result=dialog.showAndWait();
+        if(result.isPresent()){
+            signin(result.get());
+        }
     }
 
     

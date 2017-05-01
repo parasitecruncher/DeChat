@@ -54,7 +54,7 @@ public class ClientController implements Initializable {
     
     @FXML
     private Button update;
-    private GUIManager dchat;
+    private GUIManager guiManager;
     Stage primaryStage;
     ObservableList<String> peers = FXCollections.<String>observableArrayList();
 
@@ -66,7 +66,7 @@ public class ClientController implements Initializable {
     public void sendText(){
         String text=textfield.getText();
         textfield.clear();
-        dchat.client_SendText(peers.get(peerlist.getSelectionModel().getSelectedIndex()),text);
+        guiManager.client_SendText(peers.get(peerlist.getSelectionModel().getSelectedIndex()),text);
         
     }
     @FXML
@@ -107,12 +107,7 @@ public class ClientController implements Initializable {
             Logger.getLogger(ClientController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void setlist(ArrayList<String> items){
-        peers.addAll(items);
-        peerlist.setItems(peers);
-    }
     public void updatePeerList(HashMap<String,Peer> peerMap) {
-        peerlist.refresh();
         ArrayList<String> peersAL = new ArrayList(peerMap.keySet());
         peers.clear();
         peers.addAll(peersAL);
@@ -121,7 +116,7 @@ public class ClientController implements Initializable {
     
     @FXML
     public void update(){
-        dchat.update();
+        guiManager.update();
     }
     
     @FXML
@@ -131,13 +126,13 @@ public class ClientController implements Initializable {
         File file = fileChooser.showOpenDialog(primaryStage);
         if (file != null) {
             System.out.println(file.getAbsolutePath());
-            dchat.chatEngine.sendFile(peers.get(peerlist.getSelectionModel().getSelectedIndex()),
+            guiManager.chatEngine.sendFile(peers.get(peerlist.getSelectionModel().getSelectedIndex()),
                     file.getAbsolutePath());
         }
     }
 
     public void setEngine(GUIManager dchat,Stage primaryStage) {
         this.primaryStage=primaryStage;
-        this.dchat=dchat;
+        this.guiManager=dchat;
     }
 }
