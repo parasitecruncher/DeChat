@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLController">
+    
+   <children>
+      <ListView fx:id="peerlist" layoutY="32.0" onMouseClicked="#handleMouseClick" prefHeight="365.0" prefWidth="137.0" />
+      <ScrollBar fx:id="peerlistscroll" layoutX="137.0" layoutY="35.0" orientation="VERTICAL" prefHeight="365.0" prefWidth="17.0" />
+      <TextField fx:id="textfield" layoutX="154.0" layoutY="372.0" prefHeight="28.0" prefWidth="384.0" />
+      <Button fx:id="send" layoutX="540.0" layoutY="372.0" mnemonicParsing="false" onAction="#sendText" text="Send" />
+      <Button fx:id="update" mnemonicParsing="false" onAction="#update" prefHeight="28.0" prefWidth="123.0" text="Update List" />
+      <ListView id="chatlog" layoutX="154.0" layoutY="3.0" prefHeight="365.0" prefWidth="444.0" />
+   </children>
+</AnchorPane>
