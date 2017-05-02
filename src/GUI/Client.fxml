@@ -14,7 +14,8 @@
       <TextField fx:id="textfield" layoutX="154.0" layoutY="372.0" prefHeight="28.0" prefWidth="350.0" />
       <Button fx:id="send" layoutX="504.0" layoutY="372.0" mnemonicParsing="false" onAction="#sendText" text="Send" />
       <Button fx:id="update" mnemonicParsing="false" onAction="#update" prefHeight="28.0" prefWidth="123.0" text="Update List" />
-      <ListView id="chatlog" layoutX="154.0" layoutY="3.0" prefHeight="365.0" prefWidth="444.0" />
-      <Button fx:id="fileButton" onAction="#sendFile" layoutX="559.0" layoutY="372.0" mnemonicParsing="false" text="File" />
+      <ListView id="chatlog" layoutX="154.0" layoutY="33.0" prefHeight="335.0" prefWidth="444.0" />
+      <Button fx:id="fileButton" layoutX="559.0" layoutY="372.0" mnemonicParsing="false" onAction="#sendFile" text="File" />
+      <Button fx:id="createGroupButton" layoutX="529.0" mnemonicParsing="false" text="Create Group" onAction="#createGroup" />
    </children>
 </AnchorPane>

@@ -35,6 +35,7 @@ public class RendezousServer {
                     while (true) {
                         Socket csock;
                         try {
+                            System.err.println("server still waiting for connections...");
                             csock = serverSocket.accept();
                             System.out.println(csock.getInetAddress().getHostAddress()+" ");
                             Platform.runLater(new Runnable() {

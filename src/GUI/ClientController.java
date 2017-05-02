@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,11 +28,17 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 import peer.GUIManager;
 /**
  * FXML Controller class
@@ -51,6 +58,8 @@ public class ClientController implements Initializable {
     private Button send;
     @FXML
     private Button fileButton;
+    @FXML
+    private Button createGroupButton;
     
     @FXML
     private Button update;
@@ -130,9 +139,13 @@ public class ClientController implements Initializable {
                     file.getAbsolutePath());
         }
     }
-
-    public void setEngine(GUIManager dchat,Stage primaryStage) {
+    public void setEngine(GUIManager guiManager,Stage primaryStage) {
         this.primaryStage=primaryStage;
-        this.guiManager=dchat;
+        this.guiManager=guiManager;
+    }
+    
+    
+    public void createGroup(){
+        guiManager.showCreateGroupDialog();
     }
 }

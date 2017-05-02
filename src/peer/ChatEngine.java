@@ -45,6 +45,7 @@ public class ChatEngine {
     
     public ChatEngine(String username,GUIManager guiManager) {
         uptodatePeer = null;
+        this.guiManager = guiManager;        
         peerMap = new HashMap<String, Peer>();
         groupMap = new HashMap<String,Group>();
         tEngine = new TextEngine();
